@@ -27,6 +27,11 @@ def scrapeGame(game):
     # table for scoring stats
     stats = pd.read_html(str(divs[0].findAll(
         "div",id=re.compile("^all_team_stats"))[0].findAll('table')[0]))[0]
+    # length of drives table = number of drives
+    home_drives = len(pd.read_html(str(divs[0].findAll(
+    "table",id='home_drives')))[0].index)
+    away_drives = len(pd.read_html(str(divs[0].findAll(
+    "table",id='away_drives')))[0].index)
 
     # get datetime object for the dict
     date_ = divs[0].findAll("div", class_='scorebox')[0].findAll(
@@ -68,10 +73,11 @@ def scrapeGame(game):
     'teama_tds_rush' : int(stats.iloc[1,1].split('-')[2]),
     'teama_tds_pass' : int(stats.iloc[2,1].split('-')[3]),
     'teama_tos' : int(stats.iloc[7,1]),
-    'teama_4d_att' : stats.iloc[10, 1].split('-')[1],
-    'teama_4d_comp' : stats.iloc[10, 1].split('-')[0],
-    'teama_sacks' : stats.iloc[3, 2].split('-')[0],
-    'teama_sack_yds' : stats.iloc[3, 2].split('-')[1],
+    'teama_4d_att' : int(stats.iloc[10, 1].split('-')[1]),
+    'teama_4d_comp' : int(stats.iloc[10, 1].split('-')[0]),
+    'teama_sacks' : int(stats.iloc[3, 2].split('-')[0]),
+    'teama_sack_yds' : int(stats.iloc[3, 2].split('-')[1]),
+    'teama_drives' : int(away_drives),
     'teamh_name' : points.iloc[1,1],
     'teamh_pts' : int(points.iloc[1,6]),
     'teamh_pts_q1' : int(points.iloc[1,2]),
@@ -87,8 +93,9 @@ def scrapeGame(game):
     'teamh_tos' : int(stats.iloc[7,2]),
     'teamh_4d_att' : stats.iloc[10, 2].split('-')[1],
     'teamh_4d_comp' : stats.iloc[10, 2].split('-')[0],
-    'teama_sacks' : stats.iloc[3, 1].split('-')[0],
-    'teama_sack_yds' : stats.iloc[3, 1].split('-')[1],
+    'teamh_sacks' : stats.iloc[3, 1].split('-')[0],
+    'teamh_sack_yds' : stats.iloc[3, 1].split('-')[1],
+    'teamh_drives' : int(home_drives)
     })
 
     return game_dict
