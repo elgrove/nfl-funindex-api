@@ -5,6 +5,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import datetime as dt
 import sqlite3
+import math
 
 def insertRow(conn, tablename, row_dict):
     '''takes any dict and inserts it into a sql table with matching schema'''
@@ -29,9 +30,12 @@ def scrapeGame(game):
         "div",id=re.compile("^all_team_stats"))[0].findAll('table')[0]))[0]
     # length of drives table = number of drives
     home_drives = len(pd.read_html(str(divs[0].findAll(
-    "table",id='home_drives')))[0].index)
+        "table",id='home_drives')))[0].index)
     away_drives = len(pd.read_html(str(divs[0].findAll(
-    "table",id='away_drives')))[0].index)
+        "table",id='away_drives')))[0].index)
+    # kick and punt returns
+    returns = pd.read_html(str(divs[0].findAll(
+        "table",id='returns')))[0]
 
     # get datetime object for the dict
     date_ = divs[0].findAll("div", class_='scorebox')[0].findAll(
@@ -52,6 +56,47 @@ def scrapeGame(game):
     else:
         season_ = dateobj.year - 1
     
+    # kick/punt returns work
+    split_row = None
+    try:
+        math.isnan(returns.iloc[0,0])
+        split_row = 0
+    except:
+        pass
+    try:
+        math.isnan(returns.iloc[1,0])
+        split_row = 1
+    except:
+        pass
+    try:
+        math.isnan(returns.iloc[2,0])
+        split_row = 2
+    except:
+        pass
+    try:
+        math.isnan(returns.iloc[3,0])
+        split_row = 3
+    except:
+        pass
+    try:
+        math.isnan(returns.iloc[4,0])
+        split_row = 4
+    except:
+        pass
+
+    returns.columns = returns.columns.droplevel()
+    away_returns = returns.copy().loc[:split_row-1]
+    away_returns.columns = ['Player', 'Tm', 'Rt', 'Yds', 'Y/Rt', 'TD-kick'
+        , 'Lng', 'Ret', 'Yds', 'Y/R', 'TD-punt', 'Lng']
+    home_returns = returns.copy().loc[split_row+2:]
+    home_returns.columns = ['Player', 'Tm', 'Rt', 'Yds', 'Y/Rt', 'TD-kick'
+        , 'Lng', 'Ret', 'Yds', 'Y/R', 'TD-punt', 'Lng']
+    away_rtn_td = away_returns['TD-kick'].astype(
+        int).sum() + away_returns['TD-punt'].astype(int).sum() 
+    home_rtn_td = home_returns['TD-kick'].astype(
+        int).sum() + home_returns['TD-punt'].astype(int).sum() 
+    
+
     game_dict = {}
 
     game_dict.update({
@@ -77,6 +122,7 @@ def scrapeGame(game):
     'teama_4d_comp' : int(stats.iloc[10, 1].split('-')[0]),
     'teama_sacks' : int(stats.iloc[3, 2].split('-')[0]),
     'teama_sack_yds' : int(stats.iloc[3, 2].split('-')[1]),
+    'teama_rtn_td' : int(away_rtn_td),
     'teama_drives' : int(away_drives),
     'teamh_name' : points.iloc[1,1],
     'teamh_pts' : int(points.iloc[1,6]),
@@ -95,7 +141,8 @@ def scrapeGame(game):
     'teamh_4d_comp' : stats.iloc[10, 2].split('-')[0],
     'teamh_sacks' : stats.iloc[3, 1].split('-')[0],
     'teamh_sack_yds' : stats.iloc[3, 1].split('-')[1],
-    'teamh_drives' : int(home_drives)
+    'teamh_rtn_td' : int(home_rtn_td),
+    'teamh_drives' : int(home_drives),
     })
 
     return game_dict
