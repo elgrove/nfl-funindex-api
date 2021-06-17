@@ -7,14 +7,14 @@ import datetime as dt
 import sqlite3
 import math
 
-def insertRow(conn, tablename, row_dict):
+def insert_row(conn, tablename, row_dict):
     '''takes any dict and inserts it into a sql table with matching schema'''
     keys = ','.join(row_dict.keys())
     question_marks = ','.join(list('?'*len(row_dict)))
     values = tuple(row_dict.values())
     conn.execute('INSERT INTO '+tablename+' ('+keys+') VALUES ('+question_marks+')', values)
 
-def scrapeGame(game):
+def scrape_game(game):
     '''scrapes game url returning a dict'''
     url = game
     res = requests.get(url)
@@ -147,7 +147,7 @@ def scrapeGame(game):
 
     return game_dict
 
-def getGames(cursor):
+def get_games(cursor):
     '''takes (cursor) and returns list of game ids not in db for CURRENT SEASON'''
     if dt.datetime.now().month >= 7:
         season = dt.datetime.now().year
@@ -169,21 +169,21 @@ def getGames(cursor):
     return game_urls
 
 
-def updateDB(cursor):
+def update_db(cursor):
     '''takes (cursor), updates DB with missing games from current season'''
-    games = getGames(cursor)
+    games = get_games(cursor)
     games_num = len(games)
     print(f'There are {games_num} games missing from this season')
     count_ = 1
     for game in games:
         game_id = re.findall('\d\d\d\d\d\d\d\d\d\D\D\D', game)[0]
         print(f'Scraping game {count_} of {games_num} ({game_id})')
-        dict_ = scrapeGame(game)
-        insertRow(cursor, 'data', dict_)
+        dict_ = scrape_game(game)
+        insert_row(cursor, 'data', dict_)
         count_ += 1
 
 
-def getGames_year(year, cursor):
+def get_games_year(year, cursor):
     '''takes (year, cursor) and pulls game ids not in db for a SPECIFIC SEASON'''
     url = 'https://www.pro-football-reference.com/years/' + str(year) + '/games.htm'
     req = requests.get(url)
@@ -200,17 +200,17 @@ def getGames_year(year, cursor):
                     + link.get('href'))
     return game_urls
 
-def updateDB_year(year, cursor):
+def update_db_year(year, cursor):
     '''takes (year, cursor), updates DB with missing games from given season'''
-    games = getGames_year(year, cursor)
+    games = get_games_year(year, cursor)
     games_num = len(games)
     print(f'There are {games_num} games missing from this season')
     count_ = 1
     for game in games:
         game_id = re.findall('\d\d\d\d\d\d\d\d\d\D\D\D', game)[0]
         print(f'Scraping game {count_} of {games_num} ({game_id})')
-        dict_ = scrapeGame(game)
-        insertRow(cursor, 'data', dict_)
+        dict_ = scrape_game(game)
+        insert_row(cursor, 'data', dict_)
         count_ += 1
 
         
