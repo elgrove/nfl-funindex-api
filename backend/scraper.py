@@ -93,12 +93,12 @@ def scrape_game(game):
     game_dict = {}
 
     game_dict.update({
-    'match_id' : url[49:61],
-    'date' : dateobj.date().strftime('%Y-%m-%d'),
-    'time' : dateobj.time().strftime('%H:%M:%S'),
+    'match_id' : url[49:61], # NOT INT
+    'date' : dateobj.date().strftime('%Y-%m-%d'), # NOT INT
+    'time' : dateobj.time().strftime('%H:%M:%S'), # NOT INT
     'week' : int(week_),
     'season' : int(season_),
-    'teama_name' : points.iloc[0,1],
+    'teama_name' : points.iloc[0,1], # NOT INT
     'teama_pts' : int(points.iloc[0,6]),
     'teama_pts_q1' : int(points.iloc[0,2]),
     'teama_pts_q2' : int(points.iloc[0,3]),
@@ -117,7 +117,7 @@ def scrape_game(game):
     'teama_sack_yds' : int(stats.iloc[3, 2].split('-')[1]),
     'teama_rtn_td' : int(away_rtn_td),
     'teama_drives' : int(away_drives),
-    'teamh_name' : points.iloc[1,1],
+    'teamh_name' : points.iloc[1,1], # NOT INT
     'teamh_pts' : int(points.iloc[1,6]),
     'teamh_pts_q1' : int(points.iloc[1,2]),
     'teamh_pts_q2' : int(points.iloc[1,3]),
@@ -130,10 +130,10 @@ def scrape_game(game):
     'teamh_tds_rush' : int(stats.iloc[1,2].split('-')[2]),
     'teamh_tds_pass' : int(stats.iloc[2,2].split('-')[3]),
     'teamh_tos' : int(stats.iloc[7,2]),
-    'teamh_4d_att' : stats.iloc[10, 2].split('-')[1],
-    'teamh_4d_comp' : stats.iloc[10, 2].split('-')[0],
-    'teamh_sacks' : stats.iloc[3, 1].split('-')[0],
-    'teamh_sack_yds' : stats.iloc[3, 1].split('-')[1],
+    'teamh_4d_att' : int(stats.iloc[10, 2].split('-')[1]),
+    'teamh_4d_comp' : int(stats.iloc[10, 2].split('-')[0]),
+    'teamh_sacks' : int(stats.iloc[3, 1].split('-')[0]),
+    'teamh_sack_yds' : int(stats.iloc[3, 1].split('-')[1]),
     'teamh_rtn_td' : int(home_rtn_td),
     'teamh_drives' : int(home_drives),
     })
@@ -150,7 +150,7 @@ def get_games(cursor):
     url = 'https://www.pro-football-reference.com/years/' + str(season) + '/games.htm'
     req = requests.get(url)
     soup = BeautifulSoup(req.text, 'html.parser')
-    db_games = [tup[0] for tup in cursor.execute('select match_id from data;').fetchall()]
+    db_games = [tup[0] for tup in cursor.execute('select match_id from raw;').fetchall()]
 
     game_urls = []
     for link in soup.find_all('a'):
@@ -179,7 +179,7 @@ def update_db(cursor):
         game_id = re.findall('\d\d\d\d\d\d\d\d\d\D\D\D', game)[0]
         print(f'Scraping game {count_} of {games_num} ({game_id})')
         dict_ = scrape_game(game)
-        insert_row(cursor, 'data', dict_)
+        insert_row(cursor, 'raw', dict_)
         count_ += 1
 
 
@@ -188,7 +188,7 @@ def get_games_year(year, cursor):
     url = 'https://www.pro-football-reference.com/years/' + str(year) + '/games.htm'
     req = requests.get(url)
     soup = BeautifulSoup(req.text, 'html.parser')
-    db_games = [tup[0] for tup in cursor.execute('select match_id from data;').fetchall()]
+    db_games = [tup[0] for tup in cursor.execute('select match_id from raw;').fetchall()]
 
     game_urls = []
     for link in soup.find_all('a'):
@@ -210,7 +210,7 @@ def update_db_year(year, cursor):
         game_id = re.findall('\d\d\d\d\d\d\d\d\d\D\D\D', game)[0]
         print(f'Scraping game {count_} of {games_num} ({game_id})')
         dict_ = scrape_game(game)
-        insert_row(cursor, 'data', dict_)
+        insert_row(cursor, 'raw', dict_)
         count_ += 1
 
         
