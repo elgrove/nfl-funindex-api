@@ -32,7 +32,7 @@ def scrapeGame(game):
     home_drives = len(pd.read_html(str(divs[0].findAll(
         "table",id='home_drives')))[0].index)
     away_drives = len(pd.read_html(str(divs[0].findAll(
-        "table",id='away_drives')))[0].index)
+        "table",id='vis_drives')))[0].index)
     # kick and punt returns
     returns = pd.read_html(str(divs[0].findAll(
         "table",id='returns')))[0]
