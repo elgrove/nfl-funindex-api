@@ -7,13 +7,6 @@ import datetime as dt
 import sqlite3
 import math
 
-def insert_row(conn, tablename, row_dict):
-    '''takes any dict and inserts it into a sql table with matching schema'''
-    keys = ','.join(row_dict.keys())
-    question_marks = ','.join(list('?'*len(row_dict)))
-    values = tuple(row_dict.values())
-    conn.execute('INSERT INTO '+tablename+' ('+keys+') VALUES ('+question_marks+')', values)
-
 def scrape_game(game):
     '''scrapes game url returning a dict'''
     url = game
@@ -147,6 +140,7 @@ def scrape_game(game):
 
     return game_dict
 
+
 def get_games(cursor):
     '''takes (cursor) and returns list of game ids not in db for CURRENT SEASON'''
     if dt.datetime.now().month >= 7:
@@ -168,6 +162,12 @@ def get_games(cursor):
                     + link.get('href'))
     return game_urls
 
+def insert_row(conn, tablename, row_dict):
+    '''takes any dict and inserts it into a sql table with matching schema'''
+    keys = ','.join(row_dict.keys())
+    question_marks = ','.join(list('?'*len(row_dict)))
+    values = tuple(row_dict.values())
+    conn.execute('INSERT INTO '+tablename+' ('+keys+') VALUES ('+question_marks+')', values)
 
 def update_db(cursor):
     '''takes (cursor), updates DB with missing games from current season'''
