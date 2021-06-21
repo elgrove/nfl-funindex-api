@@ -57,3 +57,4 @@ create_table = '''create table raw (
 
 cur.execute(create_table)
 
+con.commit()
