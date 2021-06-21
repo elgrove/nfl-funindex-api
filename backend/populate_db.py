@@ -9,3 +9,7 @@ years = range(2015, 2021, 1)
 
 for year in years:
     update_db_year(year, cursor)
+    print(f'Finished scraping {year}')
+
+con.commit()
+print('Data update committed')

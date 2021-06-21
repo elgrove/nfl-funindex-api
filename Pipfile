@@ -19,6 +19,7 @@ pandas = "*"
 bs4 = "*"
 lxml = "*"
 ipykernel = "*"
+litecli = "*"
 
 [requires]
 python_version = "3.9"
