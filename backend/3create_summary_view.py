@@ -14,6 +14,7 @@ select match_id
 , teama_name
 , teamh_name
 , teama_pts+teamh_pts as pts
+, teama_pts_q4+teamh_pts+q4 as ptsqf
 , teama_yds+teamh_yds as yds
 , teama_tds+teamh_tds as tds
 , teama_tos+teamh_tos as tos
