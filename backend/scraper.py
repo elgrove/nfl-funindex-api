@@ -76,19 +76,24 @@ def scrape_game(game):
         split_row = 4
     except:
         pass
-
-    returns.columns = returns.columns.droplevel()
-    away_returns = returns.copy().loc[:split_row-1]
-    away_returns.columns = ['Player', 'Tm', 'Rt', 'Yds', 'Y/Rt', 'TD-kick'
-        , 'Lng', 'Ret', 'Yds', 'Y/R', 'TD-punt', 'Lng']
-    home_returns = returns.copy().loc[split_row+2:]
-    home_returns.columns = ['Player', 'Tm', 'Rt', 'Yds', 'Y/Rt', 'TD-kick'
-        , 'Lng', 'Ret', 'Yds', 'Y/R', 'TD-punt', 'Lng']
-    away_rtn_td = away_returns['TD-kick'].astype(
-        int).sum() + away_returns['TD-punt'].astype(int).sum() 
-    home_rtn_td = home_returns['TD-kick'].astype(
-        int).sum() + home_returns['TD-punt'].astype(int).sum() 
     
+    if split_row is not None:
+        returns.columns = returns.columns.droplevel()
+        away_returns = returns.copy().loc[:split_row-1]
+        away_returns.columns = ['Player', 'Tm', 'Rt', 'Yds', 'Y/Rt', 'TD-kick'
+            , 'Lng', 'Ret', 'Yds', 'Y/R', 'TD-punt', 'Lng']
+        home_returns = returns.copy().loc[split_row+2:]
+        home_returns.columns = ['Player', 'Tm', 'Rt', 'Yds', 'Y/Rt', 'TD-kick'
+            , 'Lng', 'Ret', 'Yds', 'Y/R', 'TD-punt', 'Lng']
+        away_rtn_td = away_returns['TD-kick'].astype(
+            int).sum() + away_returns['TD-punt'].astype(int).sum() 
+        home_rtn_td = home_returns['TD-kick'].astype(
+            int).sum() + home_returns['TD-punt'].astype(int).sum() 
+    # ** imperfect hack alert **
+    else:
+        away_rtn_td = 0
+        home_rtn_td = 0
+
 
     game_dict = {}
 

@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+ipython = "*"
 requests = "*"
 numpy = "*"
 pandas = "*"
@@ -17,6 +18,7 @@ numpy = "*"
 pandas = "*"
 bs4 = "*"
 lxml = "*"
+ipykernel = "*"
 
 [requires]
 python_version = "3.9"
