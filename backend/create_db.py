@@ -54,7 +54,6 @@ create_table = '''create table raw (
     teamh_drives integer)
 '''
 
-cur.execute('drop table raw')
 
 cur.execute(create_table)
 
