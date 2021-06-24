@@ -23,7 +23,7 @@ select match_id
 , teama_sack_yds+teamh_sack_yds as sackyds
 , (teama_rtn_td+teamh_rtn_td) as rtns
 , teama_drives+teamh_drives as drives
-, (teama_tds+teamh_tds)/(teama_drives+teamh_drives) as drvtdpc
+, (teama_tds+teamh_tds)/(teama_drives+teamh_drives) as drvtdpc -- NOT WORKING
 , case when teama_pts-teamh_pts <= 7 then 1 else 0 end as close
 , case when (teama_pts-teama_pts_q4)-(teamh_pts-teamh_pts_q4) <= 7 then 1 else 0 end as closeqf
 from raw;'''

@@ -94,6 +94,9 @@ def scrape_game(game):
         away_rtn_td = 0
         home_rtn_td = 0
 
+    ot = 0
+    if points.shape == (2,8):
+        ot = 1
 
     game_dict = {}
 
@@ -103,8 +106,9 @@ def scrape_game(game):
     'time' : dateobj.time().strftime('%H:%M:%S'), # NOT INT
     'week' : int(week_),
     'season' : int(season_),
+    'ot' :  ot,
     'teama_name' : points.iloc[0,1], # NOT INT
-    'teama_pts' : int(points.iloc[0,6]),
+    'teama_pts' : int(points.iloc[0,-1]),
     'teama_pts_q1' : int(points.iloc[0,2]),
     'teama_pts_q2' : int(points.iloc[0,3]),
     'teama_pts_q3' : int(points.iloc[0,4]),
@@ -123,7 +127,7 @@ def scrape_game(game):
     'teama_rtn_td' : int(away_rtn_td),
     'teama_drives' : int(away_drives),
     'teamh_name' : points.iloc[1,1], # NOT INT
-    'teamh_pts' : int(points.iloc[1,6]),
+    'teamh_pts' : int(points.iloc[1,-1]),
     'teamh_pts_q1' : int(points.iloc[1,2]),
     'teamh_pts_q2' : int(points.iloc[1,3]),
     'teamh_pts_q3' : int(points.iloc[1,4]),

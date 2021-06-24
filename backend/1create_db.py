@@ -14,6 +14,7 @@ create_table = '''create table raw (
     time text,
     week integer,
     season integer,
+    ot integer,
     teama_name integer,
     teama_pts integer,
     teama_pts_q1 integer,
