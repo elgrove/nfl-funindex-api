@@ -19,7 +19,8 @@ lxml = "*"
 ipython = "*"
 ipykernel = "*"
 litecli = "*"
-
+matplotlib = "*"
+plotly = "*"
 
 [requires]
 python_version = "3.9"

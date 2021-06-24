@@ -1,0 +1,28 @@
+CREATE VIEW
+
+game_score as \n
+
+select match_id, week, season, date, time, teama_name, teamh_name,
+
+((pts * 0.04) + 
+
+(pts_qf * 0.06) + 
+
+(tds * 0.1) + 
+
+(tos * 0.08) + 
+
+(close * 0.25) + 
+
+(closeqf * 0.75) +
+
+(sacks * 0.04) + 
+
+(sackyds * 0.005) + 
+
+(rtns * 0.3) + 
+
+(tds/drives))
+
+
+as score from game_totals 
