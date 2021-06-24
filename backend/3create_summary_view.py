@@ -26,6 +26,7 @@ select match_id
 , (teama_tds+teamh_tds)/(teama_drives+teamh_drives) as drvtdpc -- NOT WORKING
 , case when teama_pts-teamh_pts <= 7 then 1 else 0 end as close
 , case when (teama_pts-teama_pts_q4)-(teamh_pts-teamh_pts_q4) <= 7 then 1 else 0 end as closeqf
+, ot
 from raw;'''
 
 cursor.execute(query)

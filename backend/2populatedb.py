@@ -5,14 +5,12 @@ con = sqlite3.connect('backend/db.db')
 
 cursor = con.cursor()
 
-years = range(2018, 2020, 1)
-
+years = range(2018, 2021, 1)
 
 for year in years:
     update_db_year(year, cursor)
     print(f'Finished scraping {year}')
 
-# update_db_year(2020, cursor)
 
 con.commit()
 print('Data update committed')
