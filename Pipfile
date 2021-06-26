@@ -21,6 +21,8 @@ ipykernel = "*"
 litecli = "*"
 matplotlib = "*"
 plotly = "*"
+django = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.9"
