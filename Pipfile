@@ -9,6 +9,7 @@ numpy = "*"
 pandas = "*"
 bs4 = "*"
 lxml = "*"
+django-filter = "*"
 
 [dev-packages]
 requests = "*"

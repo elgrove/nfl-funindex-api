@@ -94,7 +94,7 @@ class WebView(models.Model):
     season = models.IntegerField(blank=False, null=False)
     teama_name = models.CharField(blank=False, null=False, max_length=50)
     teamh_name = models.CharField(blank=False, null=False, max_length=50)
-    fun_score = models.IntegerField(blank=False, null=False)  # This field type is a guess.
+    fun_score = models.FloatField(blank=False, null=False)  # This field type is a guess.
 
     class Meta:
         managed = False  # Created from a view. Don't remove.
