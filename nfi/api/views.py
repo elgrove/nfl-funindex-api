@@ -13,8 +13,8 @@ class RawViewSet(viewsets.ModelViewSet):
     # permission_classes = []
 
 class FilterViewSet(viewsets.ModelViewSet):
-    '''API endpoint that serves web_view filtered by season, week'''
-    queryset = WebView.objects.all().order_by('match_id')
+    '''API endpoint that serves web_view filtered by season, week, sorted by score desc'''
+    queryset = WebView.objects.all().order_by('-fun_score')
     serializer_class = WebViewSerializer
     filter_backends=[DjangoFilterBackend]
     filterset_fields = ['season', 'week']
