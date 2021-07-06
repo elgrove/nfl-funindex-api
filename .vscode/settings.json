@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "/home/aaron/.local/share/virtualenvs/nfl-funindex-Q4vAvHch/bin/python"
+    "python.pythonPath": "/home/aaron/.local/share/virtualenvs/nfl-funindex-Q4vAvHch/bin/python",
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": false
 }
