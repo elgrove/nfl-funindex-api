@@ -7,8 +7,11 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+
 class Raw(models.Model):
-    match_id = models.CharField(blank=False, null=False, max_length=11, primary_key=True) # 11 chars = 20200101abc
+    match_id = models.CharField(
+        blank=False, null=False, max_length=11, primary_key=True
+    )  # 11 chars = 20200101abc
     date = models.DateField(auto_now=False, blank=False, null=False)
     time = models.TimeField(auto_now=False, blank=False, null=False)
     week = models.IntegerField(blank=False, null=False)
@@ -55,47 +58,53 @@ class Raw(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'raw'
+        db_table = "raw"
 
 
 class SummaryView(models.Model):
-    match_id = models.CharField(blank=False, null=False, max_length=11, primary_key=True)
+    match_id = models.CharField(
+        blank=False, null=False, max_length=11, primary_key=True
+    )
     date = models.DateField(auto_now=False, blank=False, null=False)
     time = models.TimeField(auto_now=False, blank=False, null=False)
     week = models.IntegerField(blank=False, null=False)
     season = models.IntegerField(blank=False, null=False)
     teama_name = models.CharField(blank=False, null=False, max_length=50)
     teamh_name = models.CharField(blank=False, null=False, max_length=50)
-    pts = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    ptsqf = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    yds = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    tds = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    tos = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    fdpc = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    sacks = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    sackyds = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    rtns = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    drives = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    drvtdpc = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    close = models.IntegerField(blank=False, null=False)  # This field type is a guess.
-    closeqf = models.IntegerField(blank=False, null=False)  # This field type is a guess.
+    pts = models.IntegerField(blank=False, null=False)  
+    ptsqf = models.IntegerField(blank=False, null=False)  
+    yds = models.IntegerField(blank=False, null=False)  
+    tds = models.IntegerField(blank=False, null=False)  
+    tos = models.IntegerField(blank=False, null=False)  
+    fdpc = models.IntegerField(blank=False, null=False)  
+    sacks = models.IntegerField(blank=False, null=False)  
+    sackyds = models.IntegerField(blank=False, null=False)  
+    rtns = models.IntegerField(blank=False, null=False)  
+    drives = models.IntegerField(blank=False, null=False)  
+    drvtdpc = models.IntegerField(blank=False, null=False)  
+    close = models.IntegerField(blank=False, null=False)  
+    closeqf = models.IntegerField(blank=False, null=False)  
     ot = models.IntegerField(blank=False, null=False)
 
     class Meta:
         managed = False  # Created from a view. Don't remove.
-        db_table = 'summary_view'
+        db_table = "summary_view"
 
 
 class WebView(models.Model):
-    match_id = models.CharField(blank=False, null=False, max_length=11, primary_key=True)
+    match_id = models.CharField(
+        blank=False, null=False, max_length=11, primary_key=True
+    )
     date = models.DateField(auto_now=False, blank=False, null=False)
     time = models.TimeField(auto_now=False, blank=False, null=False)
     week = models.IntegerField(blank=False, null=False)
     season = models.IntegerField(blank=False, null=False)
     teama_name = models.CharField(blank=False, null=False, max_length=50)
     teamh_name = models.CharField(blank=False, null=False, max_length=50)
-    fun_score = models.FloatField(blank=False, null=False)  # This field type is a guess.
+    fun_score = models.FloatField(
+        blank=False, null=False
+    )  
 
     class Meta:
         managed = False  # Created from a view. Don't remove.
-        db_table = 'web_view'
+        db_table = "web_view"

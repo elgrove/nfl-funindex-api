@@ -1,11 +1,11 @@
 import sqlite3
 from scraper import update_db_year
 
-con = sqlite3.connect('backend/db.db')
+con = sqlite3.connect("backend/db.db")
 
 cur = con.cursor()
 
-create_table = '''create table raw (
+create_table = """create table raw (
     match_id text primary key
     , date text
     , time text
@@ -50,22 +50,22 @@ create_table = '''create table raw (
     , teamh_sack_yds integer
     , teamh_rtn_td integer
     , teamh_drives integer)
-'''
+"""
 
 
 cur.execute(create_table)
-print('DB and table raw created')
+print("DB and table raw created")
 
 years = range(2018, 2021, 1)
 
 for year in years:
     update_db_year(year, cur)
-    print(f'Finished scraping {year}')
+    print(f"Finished scraping {year}")
 
-print(f'Data update from {min(years)} to {max(years)} complete')
+print(f"Data update from {min(years)} to {max(years)} complete")
 
 
-summary_view = '''create view summary_view as
+summary_view = """create view summary_view as
 select match_id
 , date
 , time
@@ -87,13 +87,13 @@ select match_id
 , case when teama_pts-teamh_pts <= 7 then 1 else 0 end as close
 , case when (teama_pts-teama_pts_q4)-(teamh_pts-teamh_pts_q4) <= 7 then 1 else 0 end as closeqf
 , ot
-from raw;'''
+from raw;"""
 
 cur.execute(summary_view)
 
-print('Summary view created')
+print("Summary view created")
 
-web_view = '''create view web_view as
+web_view = """create view web_view as
 select match_id
 , date
 , time
@@ -114,12 +114,12 @@ case when closeqf = 1 then ptsqf * 0.04 else ptsqf * 0.02 end +
 (sackyds * 0.011) + 
 (rtns * 0.3) + 
 (ot * 0.15)
-) as fun_score from summary_view;'''
+) as fun_score from summary_view;"""
 
 cur.execute(web_view)
 
-print('Web view created')
+print("Web view created")
 
 con.commit()
 
-print('Committed')
+print("Committed")
