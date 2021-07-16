@@ -12,6 +12,7 @@ lxml = "*"
 django-filter = "*"
 django = "*"
 djangorestframework = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 ipython = "*"
@@ -20,6 +21,10 @@ litecli = "*"
 pre-commit = "*"
 flake8 = "*"
 black = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true

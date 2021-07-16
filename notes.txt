@@ -1,2 +1,0 @@
-- Celery to schedule scraping
-- Front end in vanilla html, bootstrap, js

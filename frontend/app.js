@@ -1,11 +1,10 @@
 window.addEventListener('load', () => {
 
-    // const api = `http://127.0.0.1:5000/api/?season=2020&week=17`
-    const myRequest = new Request('data.json')
+    const api = `http://127.0.0.1:8000/api/?season=2020&week=17`
+    //const api = new Request('data.json')
 
-    let table_data
     let table = document.querySelector('table')
-
+    let header = []
 
     function generateTableHead(table, data) {
         let thead = table.createTHead()
@@ -29,16 +28,16 @@ window.addEventListener('load', () => {
         }
     }
 
-    fetch(myRequest)
-        .then(response => response.json())
+    fetch(api)
+        .then(response => {
+            return response.json()
+        })
         .then(data => {
-            header = Object.keys(data[0])
-
-            generateTable(table, data)
+            console.log(data.results)
+            header = Object.keys(data.results[0])
+            generateTable(table, data.results)
             generateTableHead(table, header)
         })
     
-
-
 
 })
