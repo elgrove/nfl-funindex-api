@@ -1,7 +1,11 @@
 window.addEventListener('load', () => {
 
-    const api = `http://127.0.0.1:8000/r`
+    let current_season
+    let current_week
+    let raw_api = `http://127.0.0.1:8000/r`
+    let query_api
     //const api = new Request('data.json')
+
 
     let table = document.querySelector('table')
     let header = [
@@ -34,16 +38,25 @@ window.addEventListener('load', () => {
         }
     }
 
-    fetch(api)
+    fetch(raw_api)
         .then(response => {
             return response.json()
         })
-        .then(data => {
-            console.log(data.results)
-            //header = Object.keys(data.results[0])
-            generateTable(table, data.results)
+        .then(raw_data => {
+            current_season = raw_data.results[0].season
+            current_week = raw_data.results[0].week
+            query_api = `http://127.0.0.1:8000/q/?season=${current_season}&week=${current_week}`
+        fetch(query_api)
+        .then(response => {
+            return response.json()
+        })
+        .then(query_data => {
+            generateTable(table, query_data.results)
             generateTableHead(table, header)
         })
-    
 
+
+        })
 })
+
+

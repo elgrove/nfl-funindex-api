@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from api.models import WebView
-from api.serializers import WebViewSerializer
+from api.serializers import WebViewSerializer, RawViewSerializer
 from rest_framework import viewsets  # permissions
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -11,7 +11,7 @@ class RawViewSet(viewsets.ModelViewSet):
     """API endpoint that serves web_view as is from the DB"""
 
     queryset = WebView.objects.all().order_by("-match_id")
-    serializer_class = WebViewSerializer
+    serializer_class = RawViewSerializer
     # permission_classes = []
 
 
@@ -23,3 +23,4 @@ class QueryViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ["season", "week"]
     # permission_classes = []
+
