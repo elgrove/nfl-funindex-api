@@ -17,6 +17,15 @@ class RawViewSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class WebViewSerializer(serializers.HyperlinkedModelSerializer):
+
+    date = serializers.DateField()
+    time = serializers.TimeField()
+    teama_name = serializers.CharField()
+    teamh_name = serializers.CharField()
+    fun_score = serializers.DecimalField(
+        max_digits = 5, decimal_places = 2
+    )
+
     class Meta:
         model = WebView
         fields = [
