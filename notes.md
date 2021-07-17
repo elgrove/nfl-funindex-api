@@ -1,7 +1,8 @@
 - Celery to schedule scraping
 - Front end in vanilla html, bootstrap, js
-    - Got it working to pull from JSON but need to join up to API
-    - Need to fix CORS thing 
+    - Working to pull data from API with cors sorted
+    - How to do current week?
+      - Set up an api endpoint that returns the current season and week, then use in JS to fill in the main api hit?
 - Better to do server side templating though? in Django or Flask?
 
 ---

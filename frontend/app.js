@@ -4,7 +4,13 @@ window.addEventListener('load', () => {
     //const api = new Request('data.json')
 
     let table = document.querySelector('table')
-    let header = []
+    let header = [
+        'Date',
+        'Time',
+        'Away Team',
+        'Home Team',
+        'Fun Index'
+    ]
 
     function generateTableHead(table, data) {
         let thead = table.createTHead()
@@ -34,7 +40,7 @@ window.addEventListener('load', () => {
         })
         .then(data => {
             console.log(data.results)
-            header = Object.keys(data.results[0])
+            //header = Object.keys(data.results[0])
             generateTable(table, data.results)
             generateTableHead(table, header)
         })
