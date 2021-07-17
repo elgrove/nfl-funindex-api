@@ -10,12 +10,12 @@ from django_filters.rest_framework import DjangoFilterBackend
 class RawViewSet(viewsets.ModelViewSet):
     """API endpoint that serves web_view as is from the DB"""
 
-    queryset = WebView.objects.all().order_by("match_id")
+    queryset = WebView.objects.all().order_by("-match_id")
     serializer_class = WebViewSerializer
     # permission_classes = []
 
 
-class FilterViewSet(viewsets.ModelViewSet):
+class QueryViewSet(viewsets.ModelViewSet):
     """API endpoint that serves web_view filtered by season, week, sorted by score desc"""
 
     queryset = WebView.objects.all().order_by("-fun_score")

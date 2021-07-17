@@ -19,7 +19,9 @@ from rest_framework import routers
 from api import views
 
 router = routers.DefaultRouter()
-router.register(r"api", views.FilterViewSet)
+router.register("q", views.QueryViewSet)
+router.register("r", views.RawViewSet)
+
 
 urlpatterns = [
     path("", include(router.urls)),

@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
 
-    const api = `http://127.0.0.1:8000/api/?season=2020&week=17`
+    const api = `http://127.0.0.1:8000/r`
     //const api = new Request('data.json')
 
     let table = document.querySelector('table')
