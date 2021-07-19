@@ -4,6 +4,7 @@
     - Add sortable table
     - A bit more styling
     - Dockerise - this will be fun
+    - Can't believe none of my commit show on GH
 - Better to do server side templating though? in Django or Flask?
 
 If I were redesign the current app:
