@@ -9,18 +9,37 @@
     <title>NFL Fun Index</title>
 </head>
 <body>
-    <nav>
-            <a href="">Home</a> --
-            <a href="">Current Week</a> --
-            <a href="">History</a>
-            <br><br>
-    </nav>
-    <h1>NFL Fun Index</h1>
-    <br>
-    <p id='blurb'>The NFL Fun Index gives you the opportunity to pick the best, most fun game to watch from the previous week of NFL action without ruining the score.<br>Only big scores, huge TDs and tight contests - don't waste your time watching a snoozefest!</p>
-    <table id='data_table' class="table">
-        
-    </table>
+    <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Recent Weeks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">History</a>
+        </li>
+      </ul>
+    <div class="container-md">
+
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-10">
+                <h1>NFL Fun Index</h1><hr>
+                <p id='blurb'>Bored of watching three hours of dull gridiron? The NFL fun index is perfect for you!
+                    <br>
+                    Only big scores, huge TDs and tight contests - don't waste your time watching a snoozefest!</p>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <br>
+        <p id='current_week_header'></p>
+        <table id='data_table' class="table table-striped"></table>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
