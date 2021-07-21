@@ -55,7 +55,6 @@ window.addEventListener('load', () => {
         .then(query_data => {
             generateTable(table, query_data.results)
             generateTableHead(table, header)
-            document.getElementById('current_week_header').innerHTML = `Week ${current_week}, ${current_season} Season`
         })
 
 
@@ -78,7 +77,6 @@ document.getElementById('week_select').addEventListener('change', (event) => {
         current_season = document.getElementById('season_select').value
         generateTable(table, query_data.results)
         generateTableHead(table, header)        
-        document.getElementById('current_week_header').innerHTML = `Week ${query_week}, ${current_season} Season`
     })
 })
 
@@ -97,6 +95,5 @@ document.getElementById('season_select').addEventListener('change', (event) => {
         current_week = document.getElementById('week_select').value
         generateTable(table, query_data.results)
         generateTableHead(table, header)        
-        document.getElementById('current_week_header').innerHTML = `Week ${current_week}, ${query_season} Season`
     })
 })

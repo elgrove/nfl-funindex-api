@@ -11,7 +11,7 @@
 <body>
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Last Week</a>
+      <a class="nav-link active" href="index.html">Home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" aria-current="page" href="week.html">Previous Weeks</a>
@@ -29,42 +29,54 @@
             </div>
         </div>
 
-        <br>
         <p>Select below to see how that week's games scored on the NFL Fun Index</p>
-        Week: 
-        <select name="week" id="week_select">
-          <option value="1">01</option>
-          <option value="2">02</option>
-          <option value="3">03</option>
-          <option value="4">04</option>
-          <option value="5">05</option>
-          <option value="6">06</option>
-          <option value="7">07</option>
-          <option value="8">08</option>
-          <option value="9">09</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-          <option value="17">17</option>
-          <option value="18">18</option>
-        </select>
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col-4">
+            <select name="week" id="week_select" class="form-select">
+              <option value="01">Week 1</option>
+              <option value="02">Week 2</option>
+              <option value="03">Week 3</option>
+              <option value="04">Week 4</option>
+              <option value="05">Week 5</option>
+              <option value="06">Week 6</option>
+              <option value="07">Week 7</option>
+              <option value="08">Week 8</option>
+              <option value="09">Week 9</option>
+              <option value="10">Week 10</option>
+              <option value="11">Week 11</option>
+              <option value="12">Week 12</option>
+              <option value="13">Week 13</option>
+              <option value="14">Week 14</option>
+              <option value="15">Week 15</option>
+              <option value="16">Week 16</option>
+              <option value="17">Week 17</option>
+              <option value="18">Week 18</option>
+            </select>
+          </div>
+          <div class="col">
+          </div>
+      </div>
+
         <br>
-        Season: 
-        <select name="season" id="season_select">
-          <option value="2018">2018</option>
-          <option value="2019">2019</option>
-          <option value="2020">2020</option>
-          <option value="2021">2021</option>
-        </select>
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col-6">
+            <select name="season" id="season_select" class="form-select">
+              <option value="2018">2018 Season</option>
+              <option value="2019">2019 Season</option>
+              <option value="2020">2020 Season</option>
+              <option value="2021">2021 Season</option>
+            </select>
+          </div>
+          <div class="col">
+          </div>
+      </div>
 
-      <br><br>
 
-
-      <p id='current_week_header'>Week XX, Season YYYY</p>
+      <br>
 
       <table id='data_table' class="table table-striped"></table>
     </div>
