@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    <link rel="stylesheet" href="style.css">
+
+    <title>NFL Fun Index</title>
+</head>
+<body>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Last Week</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="week.html">Previous Weeks</a>
+    </li>
+  </ul>
+    <div class="container-md">
+
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-10">
+                <h1>NFL Fun Index</h1><hr>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <br>
+        <p>Select below to see how that week's games scored on the NFL Fun Index</p>
+        Week: 
+        <select name="week" id="week_select">
+          <option value="1">01</option>
+          <option value="2">02</option>
+          <option value="3">03</option>
+          <option value="4">04</option>
+          <option value="5">05</option>
+          <option value="6">06</option>
+          <option value="7">07</option>
+          <option value="8">08</option>
+          <option value="9">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+        </select>
+        <br>
+        Season: 
+        <select name="season" id="season_select">
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+        </select>
+
+      <br><br>
+
+
+      <p id='current_week_header'>Week XX, Season YYYY</p>
+
+      <table id='data_table' class="table table-striped"></table>
+    </div>
+
+    <script src="week.js"></script>
+</body>
+</html>

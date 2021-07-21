@@ -53,7 +53,7 @@ window.addEventListener('load', () => {
         .then(query_data => {
             generateTable(table, query_data.results)
             generateTableHead(table, header)
-            document.getElementById('current_week_header').innerHTML = `Last week's action - Week ${current_week}`
+            document.getElementById('current_week_header').innerHTML = `Week ${current_week}, ${current_season} Season`
         })
 
 
