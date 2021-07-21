@@ -7,3 +7,10 @@ body {
     text-align: center;
 }
 
+
+footer {
+    font-size: 75%;
+    position: absolute;
+    top:95vh;
+    transform:translateY(-100%)
+}
