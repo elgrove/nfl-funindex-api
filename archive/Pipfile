@@ -21,7 +21,6 @@ litecli = "*"
 pre-commit = "*"
 flake8 = "*"
 black = "*"
-django-cors-headers = "*"
 
 [requires]
 python_version = "3.9"
