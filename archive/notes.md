@@ -1,20 +1,16 @@
-- Celery to schedule scraping
-- Front end in vanilla html, bootstrap, js
-    - Add link to last week
-    - Add sortable table
-    - A bit more styling
-    - Dockerise - this will be fun
-    - Then call the vanilla front end finished?
+Rebuild in Django from scratch
+- Commit final version of drf+vanilla and archive
+- Start new branch
 - Better to do server side templating though? in Django or Flask?
-
-If I were redesign the current app:
-- Create scraper and resulting model inside Django
-- 
+- Use Django ORM to create the model and migrate the db
+- Use APS to call scraper
+- Use templates to display the data
+- Write tests?
 
 ---
 
 Front end options:
-- Basic HTML/CSS/JS fetching DRF API
+~~- Basic HTML/CSS/JS fetching DRF API~~
 - Server side templating in Django ORM
 - More advanced animated CSS/JS
 - D3.js
@@ -22,7 +18,7 @@ Front end options:
 
 
 Back end options:
-- Django rest framework
+~~- Django rest framework~~
 - Django ORM
 - Flask-SQLAlchemy
 - FastAPI
