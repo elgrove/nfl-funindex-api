@@ -8,4 +8,10 @@ services:
             - ./:/usr/src/app
         ports:
             - 8000:8000
-        
+
+    web:
+        image: nginx
+        ports:
+            - 8001:80
+        volumes:
+            - ./:/usr/share/nginx/html
