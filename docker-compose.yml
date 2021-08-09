@@ -12,6 +12,6 @@ services:
     web:
         image: nginx
         ports:
-            - 8001:80
+            - 80:80
         volumes:
             - ./frontend:/usr/share/nginx/html
