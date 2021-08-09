@@ -1,6 +1,6 @@
 let current_season
 let current_week
-let raw_api = `http://127.0.0.1:8000/r`
+let raw_api = `http://45.33.89.202:8000/r`
 let query_api
 let week_selection
 let season_selection
@@ -47,7 +47,7 @@ window.addEventListener('load', () => {
             current_week = raw_data.results[0].week
             document.getElementById('season_select').value = current_season
             document.getElementById('week_select').value = current_week
-            query_api = `http://127.0.0.1:8000/q/?season=${current_season}&week=${current_week}`
+            query_api = `http://45.33.89.202:8000/q/?season=${current_season}&week=${current_week}`
         fetch(query_api)
         .then(response => {
             return response.json()
@@ -64,7 +64,7 @@ window.addEventListener('load', () => {
 
 document.getElementById('week_select').addEventListener('change', (event) => {
     week_selection = event.target.value
-    query_api = `http://127.0.0.1:8000/q/?season=${current_season}&week=${week_selection}`
+    query_api = `http://45.33.89.202:8000/q/?season=${current_season}&week=${week_selection}`
     header.innerHTML = ''
     table.innerHTML = ''
     fetch(query_api)
@@ -83,7 +83,7 @@ document.getElementById('week_select').addEventListener('change', (event) => {
 document.getElementById('season_select').addEventListener('change', (event) => {
     season_selection = event.target.value
     current_week = document.getElementById('week_select').value
-    query_api = `http://127.0.0.1:8000/q/?season=${season_selection}&week=${current_week}`
+    query_api = `http://45.33.89.202:8000/q/?season=${season_selection}&week=${current_week}`
     header.innerHTML = ''
     table.innerHTML = ''
     fetch(query_api)

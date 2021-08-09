@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
 
     let current_season
     let current_week
-    let raw_api = `http://127.0.0.1:8000/r`
+    let raw_api = `http://45.33.89.202:8000/r`
     let query_api
     //const api = new Request('data.json')
 
@@ -45,7 +45,7 @@ window.addEventListener('load', () => {
         .then(raw_data => {
             current_season = raw_data.results[0].season
             current_week = raw_data.results[0].week
-            query_api = `http://127.0.0.1:8000/q/?season=${current_season}&week=${current_week}`
+            query_api = `http://45.33.89.202:8000/q/?season=${current_season}&week=${current_week}`
         fetch(query_api)
         .then(response => {
             return response.json()
