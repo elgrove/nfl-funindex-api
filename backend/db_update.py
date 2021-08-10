@@ -1,7 +1,10 @@
 import sqlite3
 from scraper import update_db
+import os
 
-con = sqlite3.connect("backend/db.db")
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+con = sqlite3.connect("db.db")
 
 cur = con.cursor()
 
