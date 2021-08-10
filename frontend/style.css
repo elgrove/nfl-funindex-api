@@ -10,7 +10,10 @@ body {
 
 footer {
     font-size: 75%;
-    position: absolute;
-    top:95vh;
-    transform:translateY(-100%)
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    margin-top: -5%;
 }

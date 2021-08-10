@@ -38,6 +38,7 @@ window.addEventListener('load', () => {
         }
     }
 
+
     fetch(raw_api)
         .then(response => {
             return response.json()
