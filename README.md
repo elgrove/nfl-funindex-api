@@ -1,6 +1,6 @@
 # NFL Fun Index
 
-A website that recommends NFL games to watch based on their statistics, without giving away the score.
+A website that uses statistics to rank last week's NFL games by how fun they are to watch, without giving away the score.
 
 ## Description
 
@@ -24,14 +24,6 @@ I like NFL but don't live in the US or have much exposure to the US sports media
 * `cd` into the repository directory and run `docker-compose up -d`
 * The API is available at port 8001 and the web frontend on port 8000
 
-
-<!-- ## Help -->
-
-<!-- 
-## Authors
-
-Aaron Elgrove
-[@DomPizzie](https://twitter.com/dompizzie) -->
 
 ## Version History
 
