@@ -18,16 +18,13 @@ I like NFL but don't live in the US or have much exposure to the US sports media
 ### Installing
 
 * Clone this repository
-* `cd` into it and run `docker-compose up -d`
-* The API is available at port 8001 and the web frontend on port 8000
+
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+* `cd` into the repository directory and run `docker-compose up -d`
+* The API is available at port 8001 and the web frontend on port 8000
+
 
 <!-- ## Help -->
 
