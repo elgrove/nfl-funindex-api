@@ -23,7 +23,7 @@ I like NFL but don't live in the US or have much exposure to the US sports media
 
 * `cd` into the repository directory and run `docker-compose up -d`
 * The API is available at port 8001 and the web frontend on port 8000
-
+* Add `backend/db_update.py` as a cron job or other scheduled task every 15 mins
 
 ## Version History
 
