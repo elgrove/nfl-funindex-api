@@ -19,7 +19,6 @@ I like NFL but don't live in the US or have much exposure to the US sports media
 
 * Clone this repository
 
-
 ### Executing program
 
 * `cd` into the repository directory and run `docker-compose up -d`
